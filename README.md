@@ -1,7 +1,7 @@
-# houdini-hython
+# houdini-headless
 
-Houdini を GUI で開かずに、hython（Houdini 同梱の Python）からシーンを操作するためのスクリプト集です。
-最終的には「Arnold のレンダーバージョンを上げて Deadline に投げる」社内ツールを目指しています。
+Houdini を GUI で開かずに操作するためのツール集です。
+hython（Houdini 同梱の Python）を使い、hip の中身を調べたり、ノードやパラメータを操作したりします。
 
 ## 動作環境
 
@@ -49,6 +49,5 @@ Houdini の環境が設定済みのシェルを開く方法もあります。
 ## ロードマップ
 
 - [ ] hip 内のネットワーク（SOP / ROP など）のノードをビジュアライズする GUI
-- [ ] ROP の一覧取得とパラメータの上書き
-- [ ] Arnold ROP のレンダーバージョンを上げる
-- [ ] Deadline へのジョブ投入
+- [ ] ノードのパラメータの取得と上書き
+- [ ] 応用例：レンダー設定の変更と Deadline へのジョブ投入（Arnold）
