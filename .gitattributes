@@ -1,0 +1,9 @@
+# Houdini / USD のバイナリファイルは改行変換しない
+*.hip    binary
+*.hipnc  binary
+*.hiplc  binary
+*.usd    binary
+*.usdc   binary
+*.usdz   binary
+*.bgeo*  binary
+*.exr    binary

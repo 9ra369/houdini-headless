@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.pyc
+
+# Houdini
+backup/
+*.hip_bak*
+*.hipnc_bak*
+
+# レンダー出力・キャッシュ
+render/
+cache/
+
+# エディタ / OS
+.vscode/
+Thumbs.db
