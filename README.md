@@ -6,7 +6,7 @@ hython（Houdini 同梱の Python）を使い、hip の中身を調べたり、�
 ## 動作環境
 
 | 項目 | バージョン / 場所 |
-|---|---|
+| --- | --- |
 | Houdini | 22.0.368（`C:\Program Files\Side Effects Software\Houdini 22.0.368`） |
 | hython | 上記 `bin\hython.exe`（Python 3.13） |
 | GUI 用 Python | 通常の Python 3.13 + PySide6 |
@@ -17,7 +17,7 @@ hython は起動中ずっと Houdini のライセンスを使います。
 ## ファイル構成
 
 | ファイル | 内容 |
-|---|---|
+| --- | --- |
 | `export_box_usd.py` | box を作り、Solaris 経由で USD に書き出すテストスクリプト |
 | `export_box_usd.hip` | 上のスクリプトが保存する hip（GUI で開いて確認する用） |
 | `box.usda` / `usd/import_box.usd` | 上のスクリプトが書き出す USD |
