@@ -1,16 +1,25 @@
 """
 hython で box を作って USD に書き出すテストスクリプト
 
-実行例 (Windows):
-  "C:\\Program Files\\Side Effects Software\\Houdini 21.0.xxx\\bin\\hython.exe" export_box_usd.py
+実行例（リポジトリのルートで実行）:
+  python -m app.houdini_env hython hython_scripts/export_box_usd.py [出力フォルダ]
+
+出力フォルダを省略すると、リポジトリの samples/ に書き出す
 """
 import os
+import sys
 import hou
 
-# 出力先: このスクリプトと同じフォルダに box.usda を書き出す
-out_dir = os.path.dirname(os.path.abspath(__file__))
+# 出力先: 引数で指定したフォルダ、省略時はリポジトリの samples/
+repo_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+out_dir = os.path.abspath(sys.argv[1]) if len(sys.argv) > 1 else os.path.join(repo_root, "samples")
+os.makedirs(out_dir, exist_ok=True)
 usd_path = os.path.join(out_dir, "box.usda").replace("\\", "/")
 hip_path = os.path.join(out_dir, "export_box_usd.hip").replace("\\", "/")
+
+# 先に hip の場所を決めて $HIP を出力先に向ける
+# （sopimport のレイヤーは $HIP/usd/ に書き出されるため。未保存のままだとカレントフォルダになる）
+hou.hipFile.setName(hip_path)
 
 # --- 1. SOP で box を作る -------------------------------------------
 geo = hou.node("/obj").createNode("geo", "box_geo")
