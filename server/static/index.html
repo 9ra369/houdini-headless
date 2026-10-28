@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>houdini-headless</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">houdini-headless</div>
+    <div class="hip">
+      <span id="hip-name">（hip 未読み込み）</span>
+      <span id="hip-unsaved" class="unsaved" hidden title="保存していない変更があります">● 未保存</span>
+      <span id="hip-path" class="muted"></span>
+    </div>
+    <div class="actions">
+      <button id="btn-open">開く…</button>
+      <button id="btn-save">保存</button>
+      <button id="btn-save-as">別名で保存…</button>
+      <button id="btn-shutdown" class="danger" title="hython を終了してライセンスを返す">停止</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="panel tree-panel">
+      <h2>ノード</h2>
+      <ul id="tree" class="tree"></ul>
+    </section>
+
+    <section class="panel graph-panel">
+      <div class="graph-bar">
+        <button id="btn-up" title="1 つ上のネットワークへ">↑</button>
+        <nav id="breadcrumb" class="breadcrumb"></nav>
+        <button id="btn-fit" title="全体を表示">全体</button>
+        <button id="btn-reload" title="読み込み直す">更新</button>
+      </div>
+      <svg id="graph" class="graph">
+        <g id="viewport">
+          <g id="edges"></g>
+          <g id="nodes"></g>
+        </g>
+      </svg>
+      <div id="graph-empty" class="graph-empty" hidden>このネットワークにはノードがありません</div>
+      <div class="graph-hint muted">ドラッグで移動 / ホイールで拡大縮小 / ダブルクリックで中に入る</div>
+    </section>
+
+    <section class="panel parm-panel">
+      <div id="parm-empty" class="muted pad">ノードを選ぶと、パラメータが表示されます</div>
+      <div id="parm-view" hidden>
+        <div class="parm-head">
+          <div>
+            <div id="parm-node-name" class="node-name"></div>
+            <div id="parm-node-type" class="muted"></div>
+          </div>
+          <div class="parm-actions">
+            <button id="btn-render" class="primary" hidden>ROP を実行</button>
+            <button id="btn-apply" class="primary" disabled>適用</button>
+            <button id="btn-revert" disabled>元に戻す</button>
+          </div>
+        </div>
+        <label class="muted small"><input type="checkbox" id="show-hidden"> 非表示のパラメータも表示</label>
+        <div id="parms" class="parms"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="log-panel">
+    <div class="log-head">
+      <span>ログ</span>
+      <span id="busy" class="busy" hidden>処理中…</span>
+      <span id="server-info" class="muted"></span>
+    </div>
+    <ol id="log" class="log"></ol>
+  </footer>
+
+  <dialog id="file-dialog" class="file-dialog">
+    <form method="dialog" class="file-dialog-body">
+      <h2>hip を開く</h2>
+      <input id="file-dir" class="file-dir" spellcheck="false" placeholder="フォルダのパス（Enter で移動）">
+      <ul id="file-list" class="file-list"></ul>
+      <div class="dialog-actions">
+        <button value="cancel">閉じる</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div id="stopped" class="stopped" hidden>
+    <div>サーバーを停止しました。<br>もう一度使うときは、ターミナルからサーバーを起動してください。</div>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
